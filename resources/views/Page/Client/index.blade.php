@@ -3,14 +3,28 @@
 @section('title','List Client')
 @section('content')
 <div class="content" id="contenthide">
-    <div class="titlepage">
-        <h4>Liste Clients</h4>
-    </div>
     <div class="row">
-        <div class="col-md-9"></div>
-        <div class="col-md-3 text-right">
-            <a href="{{route('Client.create')}}" class="btn"> Add</a>
-            <button type="submit">Import PDF</button>
+        <div class="col-md-7">
+            <div class="titlepage">
+                <h4>Liste Clients</h4>
+            </div>
+        </div>
+        <div class="col-md-5 text-right">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{route('Client.create')}}" class="btn"> Add</a>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn">Import PDF</button>
+                </div>
+                <div class="col-md-5">
+                    <form action="/Clientsearch" method="GET">
+                    @csrf
+                        <input type="search" class="txtsearch1" name="searchClient" id="search">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -35,8 +49,19 @@
                 <td>{{ $info['Address'] }}</td>
                 <td>{{ $info['Telephone'] }}</td>
                 <td>{{ $info['pirme'] }}</td>
-                <td class="text-right">
-                    <button class="btn btn-danger">Delete</button>
+                <td class="text-right">                       
+                    <button class="btn btn-danger" type="submit" onclick="Delete();">Delete</button>
+                    <div class="logout" id="Delete">
+                      <div class="formModel">
+                        <form action="{{route('Client.destroy',['Client'=>$info->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                          <p>Are you sure Delete this Client ?</p>
+                          <button type="submit" class="btn float-left">Yes</button>
+                          <a href="javascript:void(0)" class="btn btn-drak float-right" onclick="DeleteNon();">Non</a>
+                        </form>
+                        </div>
+                    </div>
                 </td>
             </tr>
             @endforeach

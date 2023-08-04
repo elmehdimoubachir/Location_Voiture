@@ -7,6 +7,7 @@ use App\Models\Car;
 use App\Models\Client;
 use App\Models\Reservation;
 use App\Models\Driver;
+use App\Models\Setting;
 
 class DashboardController extends Controller
 {
@@ -15,9 +16,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('Dashbord',['Client'=>Client::all('last_name','first_name','Address','Telephone'),'Car'=>Car::all()->where('Stutat',1),
+        return view('Dashbord',['Client'=>Client::all('id','last_name','first_name','Address','Telephone'),'Car'=>Car::all()->where('Stutat',1),
         'countClient'=>Client::count(),'CountCar'=>Car::count(),'CarDispo'=>Car::where('Stutat',1)->count(),
-    'countDriver'=>Driver::count(),"TotalPric"=>Reservation::sum('Pric_Day'),'carBooking'=>Reservation::count('id_car')]);
+    'countDriver'=>Driver::count(),"TotalPric"=>Reservation::sum('Pric_Day'),'carBooking'=>Reservation::count('id_car'),'appinfo'=>Setting::findOrFail(1),]);
     }
 
     /**
@@ -67,4 +68,22 @@ class DashboardController extends Controller
     {
         //
     }
+    public function search(Request $request){
+        $request->validate([
+            'searchClient'=>'required',
+        ]);
+
+        $txtsearch = $request->input('searchDashboard');
+        $dataClient = Client::Orwhere('last_name',$searchclient )->Orwhere('first_name',$searchclient)->Orwhere('CIN',$searchclient)->get();
+        $dataCar = Car::Orwhere('Matricule',$txtsearch)->Orwhere('Marque',$txtsearch)->Orwhere('Model',$txtsearch)->Orwhere('Categore',$txtsearch)->get();
+
+        if($dataClient!==null){
+            return view('Page/Client/index',['data'=> $$dataClient]);
+        }
+        
+        if($dataCar!==null){
+            return view('Page/Car/index',['data'=> $dataCar]);
+        }
+    }
+
 }

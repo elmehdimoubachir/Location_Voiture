@@ -36,6 +36,7 @@ class ClientController extends Controller
             'Address'=>'required',
             'Telephone'=>'required',
             'pirme'=>'required',
+
         ]);
 
         $Client = new Client();
@@ -48,6 +49,11 @@ class ClientController extends Controller
         $Client->Telephone = $request->input('Telephone');
         $Client->pirme = $request->input('pirme');
 
+        $imageName = time().'.'.$request->image->extension();
+
+        $request->image->move(public_path('assets/Images/'),$imageName);
+        
+        $Client->photoCin=$imageName;
         $Client->save();
 
         return redirect()->route('Client.index');
@@ -75,7 +81,29 @@ class ClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'last_name'=>'required',
+            'first_name'=>'required',
+            'CIN'=>'required',
+            'dateBrithy'=>'required',
+            'Address'=>'required',
+            'Telephone'=>'required',
+            'pirme'=>'required',
+        ]);
+
+        $UpdateTo = Client::findOrFail($id);
+
+        $UpdateTo->last_name = $request->input('last_name');
+        $UpdateTo->first_name = $request->input('first_name');
+        $UpdateTo->CIN = $request->input('CIN');
+        $UpdateTo->dateBrithy = $request->input('dateBrithy');
+        $UpdateTo->Address = $request->input('Address');
+        $UpdateTo->Telephone = $request->input('Telephone');
+        $UpdateTo->pirme = $request->input('pirme');
+
+        $UpdateTo->save();
+
+        return redirect()->route('Client.index');
     }
 
     /**
@@ -83,6 +111,19 @@ class ClientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $toDelete = Client::findOrFail($id);
+        $toDelete->delete();
+        return redirect()->route('Client.index');
+    }
+
+    public function search(Request $request){
+
+        $request->validate([
+            'searchClient'=>'required',
+        ]);
+
+        $searchclient = $request->input('searchClient');
+
+        return view('Page/Client/index',['data'=> Client::Orwhere('last_name',$searchclient )->Orwhere('first_name',$searchclient)->Orwhere('CIN',$searchclient)->get()]);
     }
 }

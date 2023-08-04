@@ -1,5 +1,5 @@
 @extends('Layout/Layout')
-@section('title','Dashboard')
+@section('title','Booking')
 @section('content')
 <div class="content" id="contenthide">
     <div class="row">
@@ -7,10 +7,9 @@
             <h3>Booking</h3>
         </div>
         <div class="col-md-3">
-            <a href="{{ route('Reservation.create')}}" class="btn">Add</a> 
+            <a href="{{ route('Reservation.create')}}" class="btn btn-primary">Booking</a> 
         </div>
     </div>
-{{$booking}}
     <table class="table-hover table-bordered">
         <thead>
             <th>N°Booking</th>
@@ -23,9 +22,9 @@
         <tbody>
             @foreach($booking as $data)
             <tr>
-                <td><a href="">{{$data->N_RentCar}}</a></td>
-                <td><a href="">{{$data->lastname}}  {{$data->first_name}}</a></td>
-                <td><a href="">{{$data->Matricule}} / {{$data->Categore}} ({{$data->Model}})</a></td>
+                <td><a href="{{ route('Reservation.show',['Reservation'=>$data->id]) }}">{{$data->N_RentCar}}</a></td>
+                <td><a href="{{ route('Client.show',['Client'=>$data->id_client]) }}">{{$data->last_name}}  {{$data->first_name}}</a></td>
+                <td><a href="{{ route('Car.show',['Car'=>$data->id_car]) }}">{{$data->Matricule}} / {{$data->Categore}} ({{$data->Model}})</a></td>
                 <td>{{$data->Date_start}}</td>
                 <td>{{$data->Date_end}}</td>
                 <td>

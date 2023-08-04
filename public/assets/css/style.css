@@ -36,7 +36,7 @@ body{margin:0;    background-color: #e2e6fe;
   height: 100%;
   width: 250px;
   position: fixed;
-  z-index: 1;
+  /* z-index: 1; */
   top: 50px;
   left: 0;
   background-color:rgb(27, 2, 85);
@@ -102,7 +102,7 @@ header{
         top:0;
         width:100%;
         height:50px;
-        padding:7px;
+        padding:4px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         background-color:#fff;
     }
@@ -115,21 +115,31 @@ header{
     }
     .logo a{
       color: rgb(70, 153, 255);
-      padding:10px;
+      /* padding:10px; */
     }
     .logo a:hover{
         text-decoration: none;
 
     }
+    .logo img{
+      margin-bottom: 7px;
+      width:40px;
+      height:40px;
+      
+    }
     .iconh{
   width: 35px;
   height: 4px;
   background-color: black;
-  margin: 6px 0;
+  margin: 8px 0;
 }
 .hideMenu{
-  border:none;
-  background:none;
+  margin-top: 5px;
+ width:40px;
+}
+#navtitle{
+  font-size: 30px;
+  font-weight: bold;
 }
 .header-right {
           float: right;
@@ -173,6 +183,12 @@ header{
           display: block;
         }
         .txtsearch{
+          padding:5px;
+          width:90%;
+          border:1px solid #ccc;
+          border-radius:4px;
+        }
+        .txtsearch1{
           padding:5px;
           width:70%;
           border:1px solid #ccc;
@@ -243,6 +259,10 @@ footer{
       box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
       height:150px;
     }
+    .CD a{
+      text-decoration: none;
+      color:black;
+    }
     #NumD{
       position:absolute;
       right:10px;
@@ -266,3 +286,80 @@ footer{
     .form-error{
       color:red;
     }
+
+    /* Model */
+    .logout{
+      display: none;
+      position: fixed;
+      z-index: 99; 
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.8);
+    }
+    .formModel{
+position:relative;
+width:250px;
+height:120px;
+padding:20px;
+background-color:#fefefe;
+margin:200px auto;
+border-radius:20px;
+text-align: left;
+}
+
+/* ***************************  */
+
+.imgSetting{
+  width:150px;
+  height:150px;
+}
+.imgCarindex{
+  width:60px;
+  height:60px;
+}
+.imgDriver{
+  text-align: center;
+}
+.imgDriver img{
+  width:300px;
+  height:300px;
+  border-radius: 50%;
+}
+.infoDriver{
+  margin:20px auto;
+  width:450px;
+  padding:20px;
+}
+
+/* Offers */
+.card{
+  text-align: center;
+  height:400px;
+  box-shadow: 0 4px 8px 2px rgba(4, 41, 251, 0.2);  padding:20px;
+  margin:25px;
+}
+.imgOffer{
+  width:90%;
+  height:50%;
+  /* border:1px solid green; */
+}
+.span{
+  position: absolute;
+  top:0;
+  left:0;
+  transform-origin: 60% 250%;
+  transform: rotate(-30deg);
+  background-color: red;
+  color:#fff;
+  width:120px;
+  border-radius: 20px 5px 20px 5px;
+}
+.rowshow a{
+  text-decoration: none;
+}
+

@@ -4,34 +4,42 @@
 <div class="content" id="contenthide">
     <div class="row">
         <div class="col CD bg-primary">
-            <p id="titleD">Total Clients</p>
-            <p id="NumD">{{$countClient}}</p>
-            <div class="iconClient">
-                <img src="../assets/Images/customer.png" alt="" srcset="">
-            </div>
+            <a href="{{ route('Client.index') }}">
+                <p id="titleD">Total Clients</p>
+                <p id="NumD">{{$countClient}}</p>
+                <div class="iconClient">
+                    <img src="../assets/Images/customer.png" alt="" srcset="">
+                </div>
+            </a>
         </div>
         <div class="col CD bg-warning">
-            <p id="titleD">Total Cars</p>
-            <p id="NumD">{{$CountCar}}</p>
-            <div class="iconClient">
-                <img src="../assets/Images/1545951.png" alt="" srcset="">
-            </div>
+            <a href="{{ route('Car.index') }}">
+                <p id="titleD">Total Cars</p>
+                <p id="NumD">{{$CountCar}}</p>
+                <div class="iconClient">
+                    <img src="../assets/Images/1545951.png" alt="" srcset="">
+                </div>
+            </a>
         </div>
         <div class="col CD bg-info ">
-        <p id="titleD">Cars Disponible</p>
-            <p id="NumD">{{$CarDispo}}</p>
-            <div class="iconClient">
-                <img src="../assets/Images/sports-car.png" alt="" srcset="">
-            </div>
+            <a href="">
+                <p id="titleD">Cars Disponible</p>
+                <p id="NumD">{{$CarDispo}}</p>
+                <div class="iconClient">
+                    <img src="../assets/Images/sports-car.png" alt="" srcset="">
+                </div>
+            </a>
         </div>
     </div>
     <div class="row">
         <div class="col CD bg-success">
-        <p id="titleD">Drivers</p>
-            <p id="NumD">{{$countDriver}}</p>
-            <div class="iconClient">
-                <img src="../assets/Images/Driver.png" alt="" srcset="">
-            </div>
+            <a href="{{ route('Driver.index') }}">
+                <p id="titleD">Drivers</p>
+                <p id="NumD">{{$countDriver}}</p>
+                <div class="iconClient">
+                    <img src="../assets/Images/Driver.png" alt="" srcset="">
+                </div>
+            </a>
         </div>
         <div class="col CD bg-warning">
         <p id="titleD">Total Mony</p>
@@ -41,11 +49,13 @@
             </div>
         </div>
         <div class="col CD bg-warning">
-        <p id="titleD">Car Booking</p>
-            <p id="NumD">{{$carBooking}}</p>
-            <div class="iconClient">
-                <img src="../assets/Images/CarBooking.png" alt="" srcset="">
-            </div>
+            <a href="{{ route('Reservation.index') }}">
+                <p id="titleD">Car Booking</p>
+                <p id="NumD">{{$carBooking}}</p>
+                <div class="iconClient">
+                    <img src="../assets/Images/CarBooking.png" alt="" srcset="">
+                </div>
+            </a>
         </div>
     </div>
     <br>
@@ -63,7 +73,7 @@
                 <tbody>
                     @foreach($Car as $data)
                     <tr>
-                        <td>{{$data->Matricule}}</td>
+                    <td><a href="{{ route('Car.show',['Car'=>$data['id']]) }}">{{ $data['Matricule'] }}</a></td>
                         <td></td>
                         <td>{{$data->Marque}}</td>
                         <td>{{$data->Model}}</td>
@@ -92,7 +102,7 @@
                 <tbody>
                     @foreach($Client as $data)
                     <tr>
-                        <td>{{$data->last_name}} {{$data->first_name}}</td>
+                    <td><a href="{{route('Client.show',['Client'=>$data['id']])}}">{{ $data['last_name'] }} {{ $data['first_name'] }}</a></td>
                         <td>{{$data->Address}}</td>
                         <td>{{$data->Telephone}}</td>
                     </tr>

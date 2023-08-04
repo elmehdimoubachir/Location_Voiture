@@ -3,7 +3,7 @@
 @section('content')
 <div class="content" id="contenthide">
     <h2>Add Client</h2>
-    <form action="{{route('Client.store')}}" method="post">
+    <form action="{{route('Client.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <h5>Information Profision</h5>
         <div class="row">
@@ -88,7 +88,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="">phpto CIN</label>
-                    <input type="file" class="form-control" name="" id="">
+                    <input type="file" class="form-control" name="image" id="">
                 </div>
             </div>
         </div>

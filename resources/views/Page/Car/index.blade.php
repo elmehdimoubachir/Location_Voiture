@@ -3,11 +3,22 @@
 @section('content')
 <div class="content" id="contenthide">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <h3>List Cars</h3>
         </div>
-        <div class="col-md-3">
-            <a href="{{ route('Car.create')}}" class="btn">Add</a> 
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ route('Car.create')}}" class="btn btn-primary">Add</a> 
+                </div>
+                <div class="col-md-6">
+                    <form action="/Carsearch" method="GET">
+                    @csrf
+                        <input type="search" class="txtsearch1" name="searchCar" id="search">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -25,7 +36,7 @@
             @foreach($data as $info)
             <tr>
                 <td><a href="{{ route('Car.show',['Car'=>$info['id']]) }}">{{ $info['Matricule'] }}</a></td>
-                <td>{{ $info['Photo_Car'] }}</td>
+                <td><img src="{{asset('assets/Images/'.$info->Photo_Car)}}" alt="" class="imgCarindex" srcset=""></td>
                 <td>{{ $info['Marque'] }}</td>
                 <td>{{ $info['Categore'] }}</td>
                 <td>{{ $info['Model'] }}</td>

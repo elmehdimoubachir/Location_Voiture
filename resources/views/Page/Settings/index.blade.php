@@ -3,22 +3,25 @@
 @section('content')
 <div class="content" id="contenthide">
     <h3>Setting</h3>
-    <center><h5>Information Genirale</h5></center>
-    <form action="{{route('settings.update',['setting'=>$data->id])}}" method="post">
+    <center><h4>Information Genirale</h4></center>
+    <form action="{{ route('settings.update',['setting'=>$data->id]) }}" method="POST"  enctype="multipart/form-data">
     @csrf
+    @method('PUT')
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Logo Agance</label>
-                            <input type="file" name="" class="">
+                            <input type="file" name="LogoApp" class="" style="height:50px;width:300px;padding:10px;">
+                            <img src="{{asset('assets/Images/'.$data->photo_App)}}" alt="" class="imgSetting" srcset="">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Min Logo Agance</label>
-                            <input type="file" name="" class="">
+                            <input type="file" name="MinLogo" class="" style="height:50px;width:300px;padding:10px;">
+                            <img src="{{asset('assets/Images/'.$data->Icon_App)}}" alt="" class="imgSetting" srcset="">   
                         </div>
                     </div>
                 </div>
@@ -56,6 +59,7 @@
                 <input type="text" class="form-control" name="N_Banque" value="{{$data->N_Banque}}" class="" placeholder="8****************45">
             </div>
         </div>
+        <center><h4 class="m-4">Information site Web</h4></center>
         <div class="row">
             <div class="col-md-6">
                 <label for="">xxx</label>

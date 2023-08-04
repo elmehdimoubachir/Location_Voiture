@@ -15,7 +15,11 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return view('Page/Booking/index',['booking'=>Reservation::with('Car','Client')->get(),]);
+        $info = Reservation::SELECT('reservations.*','clients.last_name','clients.first_name','cars.Matricule','cars.Model','cars.Categore')
+        ->join('clients','clients.id','reservations.id_client')
+        ->join('cars','cars.id','reservations.id_car')
+        ->get();
+        return view('Page/Booking/index',['booking'=>$info,]);
     }
 
     /**
@@ -23,7 +27,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('Page/Booking/create',['Client'=>Client::all('id','last_name','first_name'),'Car'=>Car::all('id','Marque','Model'),'Driver'=>Driver::all('id','last_name','first_name'),]);
+        return view('Page/Booking/create',['Client'=>Client::all('id','last_name','first_name'),'Car'=>Car::where('Stutat',1)->get(),'Driver'=>Driver::all('id','last_name','first_name'),]);
     }
 
     /**
@@ -36,6 +40,7 @@ class ReservationController extends Controller
             'Date_end'=> 'required',
             'id_client'=>'required',
             'id_car'=>'required',
+            'Pric_Day'=>'required',
         ]);
 
         if($request->input('id_driver')!=null){
@@ -46,6 +51,9 @@ class ReservationController extends Controller
 
 
         $Reservation = new Reservation();
+
+
+        $Reservation->N_RentCar = 'C00'.date('Y').date('m');
         $Reservation->id_client = $request->input('id_client');
         $Reservation->id_car = $request->input('id_car');
         $Reservation->Date_start = $request->input('Date_start');
@@ -70,7 +78,8 @@ class ReservationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('Page/Booking/show',['Reservation' => Reservation::join('clients','clients.id','reservations.id_client')
+        ->join('cars','cars.id','reservations.id_car')->findOrFail($id),]);
     }
 
     /**
@@ -94,6 +103,6 @@ class ReservationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
     }
 }

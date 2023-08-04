@@ -5,6 +5,7 @@
     <h2>Edit Client</h2>
     <form action="{{route('Client.update',['Client'=>$Client->id])}}" method="post">
     @csrf
+    @method('PUT')
         <h5>Information Profision</h5>
         <div class="row">
             <div class="col-md-6">

@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col-md-2">
-            <a href="{{route('Driver.create')}}" class="btn"> Add</a>
+            <a href="{{route('Driver.create')}}" class="btn btn-primary"> Add</a>
         </div>
     </div>
 

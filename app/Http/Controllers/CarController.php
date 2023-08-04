@@ -43,7 +43,11 @@ class CarController extends Controller
         $Car->Categore = $request->input('Categore');
         $Car->Color = $request->input('Color');
         $Car->Prix = $request->input('Prix');
-        // $Car-> = $request->input('');
+        
+        
+        $imageCar = time().'.'.$request->Photo_Car->extension();
+        $request->Photo_Car->move(public_path('assets/Images/'),$imageCar);
+        $Car->Photo_Car=$imageCar;
 
         $Car->save();
 
@@ -100,6 +104,15 @@ class CarController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $request){
+        $request->validate([
+            'searchCar'=>'required',
+        ]);
+        $txtsearch = $request->input('searchCar');
+        return view('Page/Car/index',['data'=> Car::Orwhere('Matricule',$txtsearch)->Orwhere('Marque',$txtsearch)->Orwhere('Model',$txtsearch)->Orwhere('Categore',$txtsearch)->get()]);
+
     }
 
 }

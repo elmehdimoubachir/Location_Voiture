@@ -1,5 +1,5 @@
 @extends('Layout/Layout')
-@section('title','Reservation')
+@section('title','Booking')
 @section('content')
 <div class="content" id="contenthide">
     <div class="titlepage">
@@ -65,7 +65,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">Date start</label>
-                    <input type="date" class="form-control" name="Date_start" id="">
+                    <input type="date" class="form-control" name="Date_start" id="Date_start">
                     @error('Date_start')
                     <div class="form-error">
                         {{$message}}
@@ -76,7 +76,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">Date End</label>
-                    <input type="date" class="form-control" value="" name="Date_end" id="">
+                    <input type="date" class="form-control" value="" name="Date_end" id="Date_end" onchange='clDate();'>
                     @error('Date_end')
                     <div class="form-error">
                         {{$message}}
@@ -87,12 +87,28 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">Pric</label>
-                    <input type="text" class="form-control" name="Pric_Day" id="">
+                    <input type="text" class="form-control" name="Pric_Day" id="Pric_Day">
+                    @error('Pric_Day')
+                        <div class="form-error">
+                            {{$message}}
+                        </div>
+                        @enderror
                 </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>
+
+<script>
+    function clDate(){
+        var Date_start = document.getElementById('Date_start').value;
+    var Date_end = document.getElementById('Date_end').value;
+    var prix = document.getElementById('Pric_Day').value;
+
+    Console.log(Date_end-Date_start):
+    }
+
+    </script>
 
 @endsection

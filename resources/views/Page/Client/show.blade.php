@@ -1,5 +1,5 @@
 @extends('Layout/Layout')
-@section('title','Show')
+@section('title','Client')
 @section('content')
 <div class="row Upinfo" id="contenthide">
         <div class="col-md-12">

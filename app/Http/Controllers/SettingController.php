@@ -53,7 +53,33 @@ class SettingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'Name_App'=>'required',
+            'Addrsse'=>'required',
+            'Telephone'=>'required',
+            'Email'=>'required',
+        ]);
+
+        $toupdate = Setting::findOrFail($id);
+
+        $toupdate->Name_App =strip_tags($request->input('Name_App'));
+        $toupdate->Addrsse = strip_tags($request->input('Addrsse'));
+        $toupdate->Telephone = strip_tags($request->input('Telephone'));
+        $toupdate->Email = strip_tags($request->input('Email'));
+        $toupdate->Site_Web = strip_tags($request->input('Site_Web'));
+        $toupdate->N_Banque = strip_tags($request->input('N_Banque'));
+
+        $imageName = time().'.'.$request->LogoApp->extension();
+        $request->LogoApp->move(public_path('assets/Images/'),$imageName);
+        $toupdate->photo_App=$imageName;
+
+        $imageMinLogo = time().'.'.$request->MinLogo->extension();
+        $request->MinLogo->move(public_path('assets/Images/'),$imageMinLogo);
+        $toupdate->Icon_App=$imageMinLogo;
+
+        $toupdate->save();
+
+        return redirect()->route('settings.index');
     }
 
     /**
@@ -62,5 +88,9 @@ class SettingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function layout(){
+        return view('Layout/Layout',['Layout'=> Setting::findOrFail(1)]);
     }
 }

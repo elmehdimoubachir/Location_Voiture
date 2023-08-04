@@ -25,26 +25,43 @@
                       <a href="{{ route('Dashboard.index') }}">CarShop</a>
                   </div>
                 </div>
-                <div class="col-md-7">
-                <button class="hideMenu" onclick="HideShow()">
+                <div class="col-md-1">
+                  <div class="hideMenu" onclick="HideShow()">
                     <div class="iconh"></div>
                     <div class="iconh"></div>
                     <div class="iconh"></div>
-                  </button>
+                  </div>    
                 </div>
-                <div class="col-md-3">
-                    <input type="search" class="txtsearch" name="" id="search">
-                    <button type="submit"></button>
-
+                <div class="col-md-6">
+                    <span id="navtitle">@yield('title')</span>
+                </div>
+                <div class="col-md-2"> 
+                  <form action="/Dashboardsearch" method="GET">
+                    @csrf
+                        <input type="search" class="txtsearch" name="searchDashboard" id="search">
+                        <button type="submit"></button>
+                    </form>
+                </div> 
+                <div class="col-md-1">
                     <div class="dropdown header-right">
                       <a class="dropbtn"><img src="{{ url('assets/Images/avatar2.png')}}" alt="" srcset=""> 
                         <!-- <i class="fa fa-caret-down"></i> -->
                       </a>
                       <div class="dropdown-content">
-                        <a href="">Acounte</a>
+                        <a href="{{ route('settings.index') }}">Acounte</a>
                        <a href="javascript:void(0)" id="LL" onclick="logout();">Log out</a>
                       </div>
                     </div> 
+
+                    <div class="logout" id="logout">
+                      <div class="formModel">
+                        <form action="/logout" method="GET">
+                          <p>Are you sure logout ?</p>
+                          <button type="submit" class="btn btn-drak float-left">Yes</button>
+                          <a href="javascript:void(0)" class="btn btn-drak float-right" onclick="logoutNon();">Non</a>
+                        </form>
+                      </div>
+                    </div>
 
                 </div>
             </div> 
@@ -57,7 +74,9 @@
           <div class="lineMeun"><i class=""></i><a href="{{ route('Client.index') }}">Clients</a></div>
           <div class="lineMeun"><i class=""></i><a href="{{ route('Car.index') }}">Cars</a></div>
           <div class="lineMeun"><i class=""></i><a href="{{ route('Driver.index') }}">Driver</a></div>
-          <div class="lineMeun"><i class=""></i><a href="{{ route('Reservation.index') }}">Reservation</a></div>
+          <div class="lineMeun"><i class=""></i><a href="{{ route('Reservation.index') }}">Booking</a></div>
+          <div class="lineMeun"><i class=""></i><a href="{{ route('Offer.index') }}">Offers</a></div>
+          <div class="lineMeun"><i class=""></i><a href="">Panne</a></div>
           <div class="lineMeun"><i class=""></i><a href="">Rapport</a></div>
           <div class="lineMeun"><i class=""></i><a href="{{ route('settings.index') }}">Settings</a></div>
         </div>
@@ -108,6 +127,19 @@
         driver.style.display = "none";
       }
     }
+
+    function logout(){
+            document.getElementById("logout").style.display="block";
+        }
+        function logoutNon(){
+            document.getElementById("logout").style.display="none";
+        }
+        function Delete(){
+            document.getElementById("Delete").style.display="block";
+        }
+        function DeleteNon(){
+            document.getElementById("Delete").style.display="none";
+        }
     </script>
 </body>
 </html>

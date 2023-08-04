@@ -2,7 +2,7 @@
 @section('title','Add Car')
 @section('content')
 <div class="content" id="contenthide">
-    <form action="{{route('Car.store')}}" method="post">
+    <form action="{{route('Car.store')}}" method="post" enctype="multipart/form-data">
     @csrf
         <h3>Add Car</h3>
         <div class="row">

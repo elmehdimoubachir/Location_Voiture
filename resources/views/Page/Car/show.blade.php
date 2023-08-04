@@ -7,7 +7,7 @@
         <div class="col-ms-6">
             <div class="imgCar">
                 <center><h2>Matricule : {{$Car['Matricule']}}</h2></center>
-                <img src="" alt="" srcset="" >
+                <img src="{{asset('assets/Images/'.$Car->Photo_Car)}}" alt="" srcset="" >
             </div>
         </div>
         <div class="col-md-6 infocar">
