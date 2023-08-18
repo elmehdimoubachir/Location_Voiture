@@ -14,6 +14,9 @@
      <!-- Icon  -->
      <link rel="icon" href="{{ url('assets/Images/iconapp.jpg')}}" type="imge/x-icon" />
 
+     <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
 
 <body>
@@ -70,15 +73,16 @@
 
     <section>
         <div class="sidenav" id="hide">
-          <div class="lineMeun"><i class="fas fa-dragon"></i><a href="{{ route('Dashboard.index') }}">Dashboard</a></div>
-          <div class="lineMeun"><i class=""></i><a href="{{ route('Client.index') }}">Clients</a></div>
-          <div class="lineMeun"><i class=""></i><a href="{{ route('Car.index') }}">Cars</a></div>
-          <div class="lineMeun"><i class=""></i><a href="{{ route('Driver.index') }}">Driver</a></div>
-          <div class="lineMeun"><i class=""></i><a href="{{ route('Reservation.index') }}">Booking</a></div>
-          <div class="lineMeun"><i class=""></i><a href="{{ route('Offer.index') }}">Offers</a></div>
-          <div class="lineMeun"><i class=""></i><a href="">Panne</a></div>
-          <div class="lineMeun"><i class=""></i><a href="">Rapport</a></div>
-          <div class="lineMeun"><i class=""></i><a href="{{ route('settings.index') }}">Settings</a></div>
+        <div class="lineMeun d-flex flex-row"><i class="bi bi-grid-1x2-fill"></i><a href="{{ route('Dashboard.index') }}">Dashboard</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-people-fill"></i><a href="{{ route('Client.index') }}">Clients</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-car-front-fill"></i><a href="{{ route('Car.index') }}">Cars</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-person-gear"></i><a href="{{ route('Driver.index') }}">Driver</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-bookmark-check"></i><a href="{{ route('Reservation.index') }}">Booking</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-shop-window"></i><a href="{{ route('Offer.index') }}">Offers</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-app-indicator"></i><a href="">Notifcation</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-gear"></i><a href="">Panne</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-file-earmark-bar-graph-fill"></i><a href="">Rapport</a></div>
+          <div class="lineMeun d-flex flex-row"><i class="bi bi-sliders"></i><a href="{{ route('settings.index') }}">Settings</a></div>
         </div>
         @yield('content')
     </section>

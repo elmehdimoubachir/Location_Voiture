@@ -60,6 +60,11 @@ body{margin:0;    background-color: #e2e6fe;
   font-size: 22px;
   color: #929090;
 }
+.sidenav .lineMeun a{
+  text-decoration: none;
+  font-size: 22px;
+  color: #929090;
+}
 .sidenav .lineMeun a:hover{
   color: #212121;
 }

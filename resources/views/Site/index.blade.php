@@ -12,7 +12,7 @@
         </div>
         
     </header>
-    <button onclick="topFunction()" id="myBtn" title="Go to top" ><i class="fas fa-angle-double-up"></i>|^</button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top" ><i class="bi bi-shift"></i></button>
     <section id="offers">
         <center><h1>Offers</h1></center>
         <div class="row m-3 ">
