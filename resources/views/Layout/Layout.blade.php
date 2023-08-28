@@ -16,6 +16,7 @@
 
          <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -39,7 +40,18 @@
                     <span id="navtitle">@yield('title')</span>
                 </div>
                 <div class="col-md-1">
-                <i class="bi bi-bell-fill" style="font-size:25px; float:right;"></i>
+                    <div class="dropdown float-right">
+                    <button type="button" class="border border-light bg-light text-dark" data-bs-toggle="dropdown">
+                    <i class="bi bi-bell-fill" style="font-size:25px; float:right;"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Add Client</a></li>
+                      <li><a class="dropdown-item" href="#">Remove car</a></li>
+                      <li><a class="dropdown-item" href="#">Booking car</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Show all</a></li>   
+                    </ul>
+                  </div>
                 </div>
                 <div class="col-md-2"> 
                   <form action="/Dashboardsearch" method="GET">
